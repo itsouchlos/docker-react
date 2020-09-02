@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t itsouchlos/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true itsouchlos/docker-react npm run test
